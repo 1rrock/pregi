@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import baseImg from "../img/base.png";
 const Layout5 = () => {
+    const bgRef = useRef(null);
     const [layoutData, setLayOutData] = useState(null);
-
     useEffect(() => {
         setLayOutData(window.data?.LAYOUT5 || null);
     }, []);
+
+    useEffect(() => {
+        bgRef.current.style.backgroundColor = layoutData?.bgColor;
+    }, [layoutData])
     return (
-        <div id="Editor5">
+        <div id="Editor5" ref={bgRef}>
             {layoutData && (
                 <div className="container">
                     <div className="left">

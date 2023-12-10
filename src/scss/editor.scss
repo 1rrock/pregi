@@ -12,6 +12,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: auto;
+    padding-top: 20px;
 
     .container {
         width: 1280px;
@@ -21,6 +22,7 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        padding-top: 20px;
     }
 
     .title {
@@ -86,8 +88,9 @@ body {
 }
 
 #Editor2 {
-    width: 1280px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     padding-top: 20px;
 
     .container {
@@ -97,6 +100,7 @@ body {
         grid-template-columns: 712px 497px;
         justify-content: center;
         gap: 20px;
+        padding-top: 20px;
     }
 
     .left {
@@ -168,14 +172,16 @@ body {
 }
 
 #Editor3 {
-    width: 1280px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     padding-top: 20px;
 
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-top: 20px;
     }
 
     .center {
@@ -222,8 +228,9 @@ body {
 }
 
 #Editor4 {
-    width: 1280px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     padding-top: 20px;
 
     .container {
@@ -233,6 +240,7 @@ body {
         grid-template-columns: 712px 497px;
         justify-content: center;
         gap: 20px;
+        padding-top: 20px;
     }
 
     .left {
@@ -333,8 +341,9 @@ body {
 }
 
 #Editor5 {
-    width: 1280px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     padding-top: 20px;
 
     .container {
@@ -344,6 +353,7 @@ body {
         grid-template-columns: 712px 497px;
         justify-content: center;
         gap: 20px;
+        padding-top: 20px;
     }
 
     .left {
@@ -402,8 +412,9 @@ body {
 
 
 #Editor6 {
-    width: 1280px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     padding-top: 20px;
 
     .container {
@@ -412,6 +423,7 @@ body {
         margin: 0 auto;
         grid-template-columns: 684px 1fr;
         justify-content: center;
+        padding-top: 20px;
     }
 
     .left {

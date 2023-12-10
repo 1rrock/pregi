@@ -42,6 +42,7 @@ const CONSTANTS = {
         }
     },
     LAYOUT2: {
+        bgColor: '#fff',
         T_1: {
             bgColor: null,
             text: '',
@@ -107,6 +108,7 @@ const CONSTANTS = {
         }
     },
     LAYOUT3: {
+        bgColor: '#fff',
         T_1: {
             bgColor: null,
             text: '',
@@ -130,6 +132,7 @@ const CONSTANTS = {
         },
     },
     LAYOUT4: {
+        bgColor: '#fff',
         T_1: {
             bgColor: null,
             text: '',
@@ -180,6 +183,7 @@ const CONSTANTS = {
         }
     },
     LAYOUT5: {
+        bgColor: '#fff',
         T_1: {
             bgColor: null,
             text: '',
@@ -207,8 +211,8 @@ const CONSTANTS = {
             },
         },
     },
-
     LAYOUT6: {
+        bgColor: '#fff',
         V_1: {
             bgColor: null,
             url: null,

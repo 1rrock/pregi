@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "../component/Modal";
 import VideoModal from "../component/VideoModal";
 import baseImg from "../img/base.png";
@@ -8,18 +8,20 @@ import { useNavigate } from "react-router-dom";
 import YouTube from "react-youtube";
 
 const Editor4 = () => {
-    const [layoutData, setLayoutData] = useState(CONSTANTS.LAYOUT4);
+    const bgRef = useRef(null);
+    const [layoutData, setLayoutData] = useState(window?.data?.LAYOUT4 || CONSTANTS.LAYOUT4);
     const [isModal, setIsModal] = useState({ visibile: false, idx: null });
     const [isVideoModal, setIsVideoModal] = useState({ visible: false, idx: null });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        bgRef.current.style.backgroundColor = layoutData.bgColor
+    }, [layoutData]);
+    
     const onBgColor = (curBgColor) => {
-        setLayoutData(prev => {
-            prev.bgColor = curBgColor;
-            return prev;
-        });
-
-        document.body.style.backgroundColor = curBgColor;
+        const layout = JSON.parse(JSON.stringify(layoutData));
+        layout.bgColor = curBgColor;
+        setLayoutData(layout);
     }
 
     const onModal = (idx, set) => {
@@ -51,7 +53,9 @@ const Editor4 = () => {
 
     // 해당 레이아웃 데이터 저장
     const saveEditorData = () => {
-        window.data = {};
+        if(!window.data){
+            window.data = {}
+        }
         window.data.LAYOUT4 = layoutData; // 임시 테스트용
     };
 
@@ -76,7 +80,7 @@ const Editor4 = () => {
     }
 
     return (
-        <div id="Editor4">
+        <div id="Editor4" ref={bgRef}>
             <Gnb saveEditorData={saveEditorData} onPreview={onPreview} onBgColor={onBgColor} />
             {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} />}
             {isVideoModal.visible && <VideoModal isVideoModal={isVideoModal} setIsVideoModal={setIsVideoModal} boxChange={onChangeVideo} />}

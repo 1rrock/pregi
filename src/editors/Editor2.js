@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "../component/Modal";
 import baseImg from "../img/base.png";
 import Gnb from "../component/Gnb";
@@ -6,22 +6,23 @@ import CONSTANTS from '../constants'
 import { useNavigate } from "react-router-dom";
 
 const Editor2 = () => {
-    const [layoutData, setLayoutData] = useState(CONSTANTS.LAYOUT2);
+    const bgRef = useRef(null);
+    const [layoutData, setLayoutData] = useState(window?.data?.LAYOUT2 || CONSTANTS.LAYOUT2);
     const [isModal, setIsModal] = useState({
         visibile: false,
         idx: null
     });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        bgRef.current.style.backgroundColor = layoutData.bgColor
+    }, [layoutData]);
+
     const onBgColor = (curBgColor) => {
-        setLayoutData(prev => {
-            prev.bgColor = curBgColor;
-            return prev;
-        });
-
-        document.body.style.backgroundColor = curBgColor
+        const layout = JSON.parse(JSON.stringify(layoutData));
+        layout.bgColor = curBgColor;
+        setLayoutData(layout);
     }
-
 
     const onModal = (idx, set) => {
         setIsModal({
@@ -52,8 +53,11 @@ const Editor2 = () => {
 
     // 해당 레이아웃 데이터 저장
     const saveEditorData = () => {
-        window.data = {};
+        if(!window.data){
+            window.data = {}
+        }
         window.data.LAYOUT2 = layoutData; // 임시 테스트용
+        console.log(window.data)
     };
 
     const onPreview = () => {
@@ -62,7 +66,7 @@ const Editor2 = () => {
     };
 
     return (
-        <div id="Editor2">
+        <div id="Editor2" ref={bgRef}>
             <Gnb saveEditorData={saveEditorData} onPreview={onPreview} onBgColor={onBgColor} />
             {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} />}
             <div className="container">

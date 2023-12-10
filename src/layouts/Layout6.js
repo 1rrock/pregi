@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import YouTube from "react-youtube";
 const Layout6 = () => {
+    const bgRef = useRef(null);
     const [layoutData, setLayOutData] = useState(null);
     const getBoxId = url => url.split('v=').pop();
-
     useEffect(() => {
         setLayOutData(window.data?.LAYOUT6 || null);
     }, []);
 
+    useEffect(() => {
+        bgRef.current.style.backgroundColor = layoutData?.bgColor;
+    }, [layoutData])
+
     return (
-        <div id="Editor6">
+        <div id="Editor6" ref={bgRef}>
             {layoutData && (
                 <div className="container">
                     <div className="left">
