@@ -5,6 +5,7 @@
     background-color: rgba($color: #000000, $alpha: .5);
     left: 0;
     top: 0;
+    z-index: 100;
 }
 
 .modal {
@@ -21,6 +22,7 @@
     background-color: #fff;
     border: 1px solid #000;
     padding-bottom: 40px;
+    z-index: 100;
 
     #img {
         display: none;
@@ -87,6 +89,7 @@
     background-color: #fff;
     border: 1px solid #000;
     gap: 50px;
+    z-index: 100;
 
     input[type=text] {
         width: 420px;

@@ -31,7 +31,7 @@ const Editor1 = () => {
         });
     };
 
-    const onChangeImg = (set, id, result) => {
+    const onChangeImg = (id,result,set) => {
         setLayoutData(prev => {
             set ? prev[set][id].img = result : prev[id].img = result;
             return prev;
@@ -58,30 +58,32 @@ const Editor1 = () => {
     };
 
     return (
-        <div id="Editor1">
-            <Gnb saveEditorData={saveEditorData} onPreview={onPreview} onBgColor={onBgColor} />
-            {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} />}
-            <div className="container">
-                <input id="T_1" className="title" placeholder="타이틀" type="text" defaultValue={layoutData['T_1'].text ? layoutData['T_1'].text : ''} onChange={onChangeText} />
-                <div className="scrollArea">
-                    {
-                        Object.entries(layoutData.SET_1).map((element, idx) => {
-                            const [id, box] = element;
-                            return (
-                                <div className="box" key={id}>
-                                    <img className="thumbnail" src={box.img ? box.img : baseImg} alt="썸네일" onClick={(e) => onModal(id, 'SET_1')} />
-                                    <input id={id} className="thumbTitle" placeholder={"제목"} defaultValue={box.text ? box.text : ''} type="text" onChange={onChangeText} />
-                                </div>
-                            )
-                        })
-                    }
+        <div className="scrollArea">
+            <div id="Editor1">
+                {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} />}
+                <div className="container">
+                    <Gnb saveEditorData={saveEditorData} onPreview={onPreview} onBgColor={onBgColor} />
+                    <input id="T_1" className="title" placeholder="타이틀" type="text" defaultValue={layoutData['T_1'].text ? layoutData['T_1'].text : ''} onChange={onChangeText} />
+                    <div className="scrollArea">
+                        {
+                            Object.entries(layoutData.SET_1).map((element, idx) => {
+                                const [id, box] = element;
+                                return (
+                                    <div className="box" key={id}>
+                                        <img className="thumbnail" src={box.img ? box.img : baseImg} alt="썸네일" onClick={(e) => onModal(id, 'SET_1')} />
+                                        <input id={id} className="thumbTitle" placeholder={"제목"} defaultValue={box.text ? box.text : ''} type="text" onChange={onChangeText} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="textWrap">
+                        <textarea className="textarea" id="T_2" placeholder='내용' defaultValue={layoutData['T_2'].text ? layoutData['T_2'].text : ''} onChange={onChangeText} />
+                        <textarea className="textarea" id="T_3" placeholder="내용" defaultValue={layoutData['T_3'].text ? layoutData['T_3'].text : ''} onChange={onChangeText} />
+                    </div>
                 </div>
-                <div className="textWrap">
-                    <textarea className="textarea" id="T_2" placeholder='내용' defaultValue={layoutData['T_2'].text ? layoutData['T_2'].text : ''} onChange={onChangeText} />
-                    <textarea className="textarea" id="T_3" placeholder="내용" defaultValue={layoutData['T_3'].text ? layoutData['T_3'].text : ''} onChange={onChangeText} />
-                </div>
-            </div>
-        </div >
+            </div >
+        </div>
     )
 };
 

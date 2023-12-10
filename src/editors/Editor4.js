@@ -30,7 +30,7 @@ const Editor4 = () => {
         });
     };
 
-    const onChangeImg = (id, result, set) => {
+    const onChangeImg = (id,result,set) => {
         setLayoutData(prev => {
             set ? prev[set][id].img = result : prev[id].img = result;
             return prev;
