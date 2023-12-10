@@ -19,7 +19,7 @@ const Editor3 = () => {
             return prev;
         });
 
-        document.getElementById('root').style.backgroundColor = curBgColor
+        document.body.style.backgroundColor = curBgColor
     }
 
     const onModal = (idx, set) => {

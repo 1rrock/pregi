@@ -19,7 +19,7 @@ const Editor4 = () => {
             return prev;
         });
 
-        document.getElementById('root').style.backgroundColor = curBgColor
+        document.body.style.backgroundColor = curBgColor;
     }
 
     const onModal = (idx, set) => {
@@ -77,8 +77,8 @@ const Editor4 = () => {
 
     return (
         <div id="Editor4">
-            <Gnb saveEditorData={saveEditorData} onPreview={onPreview} />
-            {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} onBgColor={onBgColor} />}
+            <Gnb saveEditorData={saveEditorData} onPreview={onPreview} onBgColor={onBgColor} />
+            {isModal.visible && <Modal isModal={isModal} setIsModal={setIsModal} boxChange={onChangeImg} />}
             {isVideoModal.visible && <VideoModal isVideoModal={isVideoModal} setIsVideoModal={setIsVideoModal} boxChange={onChangeVideo} />}
             <div className="container">
                 <div className="left">
