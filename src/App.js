@@ -19,7 +19,7 @@ import Main from './Main';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Main />} />
+      <Route path='/main' element={<Main />} />
       <Route>
         <Route path='/layout1' element={<Layout1 />} />
         <Route path='/layout2' element={<Layout2 />} />
