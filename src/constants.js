@@ -162,7 +162,7 @@ const CONSTANTS = {
         SET_2: {
             V_1: {
                 bgColor: null,
-                url: 'https://www.youtube.com/watch?v=TezpPRaYq74',
+                url: null,
                 text: ''
             },
             V_2: {
