@@ -218,9 +218,9 @@ const Main = () => {
     //     console.log(currentObj)
     // }, [currentObj])
 
-    useEffect(() => {
-        console.error(obj)
-    }, [obj])
+    // useEffect(() => {
+    //     console.error(obj)
+    // }, [obj])
 
     const getCreateID = () => new Date().getTime();
 
@@ -336,12 +336,13 @@ const Main = () => {
         currentObj.layout = layoutNumber;
         setObj([...obj]);
         setIsSelectLayoutsVisible(false);
-        setIsEditorVisible(true);
+        // setIsEditorVisible(true);
+        editorView(currentObj);
     };
 
-    const editorView = () => {
+    const editorView = (currentObj) => {
         // setIsEditorVisible()
-        // console.log(currentObj)
+        console.log(currentObj)
     }
 
     return (
