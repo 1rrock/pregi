@@ -1,4 +1,9 @@
 #root {
+    
+}
+
+.wrap {
+    display: flex;
     padding: 3px;
     box-sizing: border-box;
     overflow: auto;
@@ -6,6 +11,7 @@
 }
 
 .lnb {
+    flex: 0 0 250px;
     width: 250px;
     border: 1px solid #000;
     box-sizing: border-box;
@@ -31,5 +37,23 @@
         font-size: 20px;
         white-space: nowrap;
         font-weight: normal;
+    }
+}
+
+.select-layouts {
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-template-rows: 200px 200px;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    button {
+        width: 350px;
+        height: 200px;
+        cursor: pointer;
     }
 }
