@@ -103,8 +103,43 @@
 
             li {
                 padding: 5px 10px;
+                cursor: pointer;
                 &:hover {
                     background-color: white;
+                }
+            }
+        }
+    }
+
+    .select-align {
+        position: relative;
+        ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+
+            li {
+                width: 40px;
+                height: 40px;
+                background-color: rgb(240,240,240);
+                border-radius: 10px;
+
+                &.left {
+                    background-image: url(../../src/img/text-left-align.png);
+                }
+
+                &.center {
+                    background-image: url(../../src/img/text-center-align.png);
+                }
+
+                &.right {
+                    background-image: url(../../src/img/text-right-align.png);
                 }
             }
         }
@@ -133,18 +168,33 @@
             background-position: center center;
         }
         &.font-color {
-            background-image: url(../../src/img/font-color.png);
-            background-position: center center;
+            position: relative;
+            display: block;
+            background-color: rgb(240,240,240);
+            // background-image: url(../../src/img/font-color.png);
+            // background-position: center center;
+            span {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #fff;
+            }
         }
         &.font-weight {
             background-image: url(../../src/img/font-weight.png);
             background-position: center center;
         }
         &.text-align {
-            // background-image: url(../../src/img/text-align.png);
+            background-image: url(../../src/img/text-left-align.png);
             background-position: center center;
         }
         &.box-color {
+            display: block;
+            background-color: rgb(240,240,240);
         }
         &.link {
             background-image: url(../../src/img/link.png);
