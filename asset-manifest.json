@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/pregi/static/css/main.4408a4a6.css",
-    "main.js": "/pregi/static/js/main.352fbd5f.js",
-    "static/js/787.5fd3acf5.chunk.js": "/pregi/static/js/787.5fd3acf5.chunk.js",
-    "index.html": "/pregi/index.html",
-    "main.4408a4a6.css.map": "/pregi/static/css/main.4408a4a6.css.map",
-    "main.352fbd5f.js.map": "/pregi/static/js/main.352fbd5f.js.map",
-    "787.5fd3acf5.chunk.js.map": "/pregi/static/js/787.5fd3acf5.chunk.js.map"
+    "main.css": "/pregi/main/static/css/main.f56d7289.css",
+    "main.js": "/pregi/main/static/js/main.83fb8c1a.js",
+    "static/js/787.5fd3acf5.chunk.js": "/pregi/main/static/js/787.5fd3acf5.chunk.js",
+    "static/media/NanumGothic-Regular.ttf": "/pregi/main/static/media/NanumGothic-Regular.6c84540de7730f833d6c.ttf",
+    "static/media/NanumGothic-Bold.ttf": "/pregi/main/static/media/NanumGothic-Bold.6499af72b1d61fe8269d.ttf",
+    "static/media/BlackHanSans-Regular.ttf": "/pregi/main/static/media/BlackHanSans-Regular.f4f89062321390018f92.ttf",
+    "index.html": "/pregi/main/index.html",
+    "main.f56d7289.css.map": "/pregi/main/static/css/main.f56d7289.css.map",
+    "main.83fb8c1a.js.map": "/pregi/main/static/js/main.83fb8c1a.js.map",
+    "787.5fd3acf5.chunk.js.map": "/pregi/main/static/js/787.5fd3acf5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4408a4a6.css",
-    "static/js/main.352fbd5f.js"
+    "static/css/main.f56d7289.css",
+    "static/js/main.83fb8c1a.js"
   ]
 }
