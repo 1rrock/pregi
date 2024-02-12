@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import baseImg from "../img/base.png";
-const Layout2 = () => {
+const Layout2 = ({layoutData}) => {
     const bgRef = useRef(null);
-    const [layoutData, setLayOutData] = useState(null);
-    useEffect(() => {
-        setLayOutData(window.data?.LAYOUT2 || null);
-    }, []);
+    // const [layoutData, setLayOutData] = useState(null);
+    // useEffect(() => {
+    //     setLayOutData(window.data?.LAYOUT2 || null);
+    // }, []);
 
     useEffect(() => {
         bgRef.current.style.backgroundColor = layoutData?.bgColor;

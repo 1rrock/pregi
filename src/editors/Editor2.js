@@ -3,16 +3,16 @@ import Modal from "../component/Modal";
 import baseImg from "../img/base.png";
 import Gnb from "../component/Gnb";
 import CONSTANTS from '../constants'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-const Editor2 = () => {
+const Editor2 = ({saveCurrentData, currentEditorData}) => {
     const bgRef = useRef(null);
-    const [layoutData, setLayoutData] = useState(window?.data?.LAYOUT2 || CONSTANTS.LAYOUT2);
+    const [layoutData, setLayoutData] = useState(currentEditorData || JSON.parse(JSON.stringify(CONSTANTS.LAYOUT2)));
     const [isModal, setIsModal] = useState({
         visibile: false,
         idx: null
     });
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         bgRef.current.style.backgroundColor = layoutData.bgColor
@@ -53,16 +53,17 @@ const Editor2 = () => {
 
     // 해당 레이아웃 데이터 저장
     const saveEditorData = () => {
-        if(!window.data){
-            window.data = {}
-        }
-        window.data.LAYOUT2 = layoutData; // 임시 테스트용
-        console.log(window.data)
+        // if(!window.data){
+        //     window.data = {}
+        // }
+        // window.data.LAYOUT2 = layoutData; // 임시 테스트용
+        // console.log(window.data)
+        saveCurrentData(layoutData);
     };
 
     const onPreview = () => {
         saveEditorData();
-        navigate('/layout2', { replace: false });
+        // navigate('/layout2', { replace: false });
     };
 
     return (

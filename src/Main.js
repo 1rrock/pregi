@@ -213,18 +213,27 @@ const Main = () => {
     const [currentObj, setCurrentObj] = useState(null);
     const [isSelectLayoutsVisible, setIsSelectLayoutsVisible] = useState(false);
     const [isEditorVisible, setIsEditorVisible] = useState(false);
+    const [isPreviewVisible, setIsPreviewVisible] = useState(false);
 
-    // useEffect(() => {
-    //     console.log(currentObj)
-    // }, [currentObj])
-
-    // useEffect(() => {
-    //     console.error(obj)
-    // }, [obj])
+    useEffect(() => {
+        if(currentObj && currentObj.data){
+            if(!isEditorVisible && !isPreviewVisible) {
+                setIsSelectLayoutsVisible(false);
+                setIsEditorVisible(true);
+            }
+        }
+    }, [isEditorVisible, isPreviewVisible, currentObj]);
 
     const getCreateID = () => new Date().getTime();
 
     const onClickList = (pickObj) => {
+        setIsPreviewVisible(false);
+        if(isEditorVisible){
+            setIsEditorVisible(false);
+        } else {
+            setIsSelectLayoutsVisible(false);
+            setIsEditorVisible(true);
+        }
         setCurrentObj(pickObj)
 
         if(!pickObj.data){
@@ -233,6 +242,7 @@ const Main = () => {
     }
 
     const onAdd = () => {
+        const newId = getCreateID();
         const addChild = () => {
             if(!currentObj.children){
                 currentObj.children = [];
@@ -240,18 +250,20 @@ const Main = () => {
 
             currentObj.children.push({
                 title: '',
-                id: getCreateID()
+                id: newId
             });
             setObj([...obj]);
+            document.getElementById(newId)
         }
 
         const newObj = [...obj];
         if(!newObj[0]){
             newObj[0] = {
                 title: '',
-                id: getCreateID()
+                id: newId
             }
             setObj(newObj)
+            document.getElementById(newId)
         } else if(currentObj) {
             addChild();
         }
@@ -273,7 +285,6 @@ const Main = () => {
                 }
             }
         }
-        // console.log(currentObj.id)
         if(newObj[0].children){
             onDeleteChild(newObj[0].children);
         }
@@ -284,6 +295,8 @@ const Main = () => {
             const val = ev.target.value;
             isObj.title = val;
             setObj([...obj]);
+
+            onClickList(isObj)
         }
     }
 
@@ -336,14 +349,79 @@ const Main = () => {
         currentObj.layout = layoutNumber;
         setObj([...obj]);
         setIsSelectLayoutsVisible(false);
-        // setIsEditorVisible(true);
-        editorView(currentObj);
+        setIsEditorVisible(true);
     };
 
-    const editorView = (currentObj) => {
-        // setIsEditorVisible()
-        console.log(currentObj)
+    const saveCurrentData = (editorData) => {
+        const newObj = [...obj]
+
+        const onSaveChild = (item) => {
+            for(let i=0; i<item.length; i++) {
+                if(currentObj.id === item[i].id){
+                    // item.splice(i, 1);
+                    item[i].data = editorData;
+                    setObj(newObj);
+                    return;
+                } else {
+                    if(item[i].children){
+                        onSaveChild(item[i].children);
+                    }
+                }
+            }
+        }
+
+        if(newObj[0].id === currentObj.id){
+            newObj[0].data = editorData;
+            setObj(newObj);
+        } else if(newObj[0].children) {
+            onSaveChild(newObj[0].children)
+        }
+
+        // TODO : 서버에 obj 저장
     }
+
+    const editorView = () => {
+        switch(currentObj.layout){
+            case 1 :
+                return <Editor1 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            case 2 :
+                return <Editor2 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            case 3 :
+                return <Editor3 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            case 4 :
+                return <Editor4 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            case 5 :
+                return <Editor5 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            case 6 :
+                return <Editor6 saveCurrentData={saveCurrentData} currentEditorData={currentObj.data} onRunPreview={onRunPreview} />
+            default :
+                return
+        }
+    }
+
+    const preView = () => {
+        switch(currentObj.layout){
+            case 1 :
+                return <Layout1 layoutData={currentObj.data} />
+            case 2 :
+                return <Layout2 layoutData={currentObj.data} />
+            case 3 :
+                return <Layout3 layoutData={currentObj.data} />
+            case 4 :
+                return <Layout4 layoutData={currentObj.data} />
+            case 5 :
+                return <Layout5 layoutData={currentObj.data} />
+            case 6 :
+                return <Layout6 layoutData={currentObj.data} />
+            default :
+                return
+        }
+    }
+
+    const onRunPreview = () => {
+        setIsPreviewVisible(true);
+        setIsEditorVisible(false);
+    };
 
     return (
         <div className="wrap">
@@ -366,11 +444,12 @@ const Main = () => {
                     </div>
                 )
             }
-            {/* {
-                isEditorVisible && (
-                    editorView()
-                )
-            } */}
+            {
+                isEditorVisible && editorView()
+            }
+            {
+                isPreviewVisible && preView()
+            }
         </div>
     )
 }

@@ -39,10 +39,20 @@
 
 .gnb {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 1280px;
-    gap: 10px;
     margin: 0 auto;
+    padding: 0 10px;
+
+    .left-btn-wrap {
+        display: flex;
+        gap: 10px;
+    }
+
+    .right-btn-wrap {
+        display: flex;
+        gap: 10px;
+    }
 
     .color {
         position: relative;
@@ -72,6 +82,74 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    .select {
+        position: relative;
+
+        ul {
+            position: absolute;
+            left: 0px;
+            top: 50px;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid #000;
+            background-color: gainsboro;
+            margin: 0;
+            padding: 0;
+
+            li {
+                padding: 5px 10px;
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+    .ctrl-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        -o-appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        text-indent: -9999px;
+        overflow: hidden;
+        &.font-familly {
+            background-image: url(../../src/img/font-familly.png);
+            background-position: center center;
+        }
+        &.font-size {
+            background-image: url(../../src/img/font-size.png);
+            background-position: center center;
+        }
+        &.font-color {
+            background-image: url(../../src/img/font-color.png);
+            background-position: center center;
+        }
+        &.font-weight {
+            background-image: url(../../src/img/font-weight.png);
+            background-position: center center;
+        }
+        &.text-align {
+            // background-image: url(../../src/img/text-align.png);
+            background-position: center center;
+        }
+        &.box-color {
+        }
+        &.link {
+            background-image: url(../../src/img/link.png);
+            background-position: center center;
+        }
     }
 }
 
