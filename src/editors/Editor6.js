@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import Gnb from "../component/Gnb";
 import VideoModal from "../component/VideoModal";
 import CONSTANTS from "../constants";
-// import { useNavigate } from "react-router-dom";
 import YouTube from "react-youtube";
 
 const Editor1 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
@@ -18,7 +17,6 @@ const Editor1 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
         set: null,
         id: null,
     });
-    // const navigate = useNavigate();
 
     useEffect(() => {
         bgRef.current.style.backgroundColor = layoutData.bgColor;
@@ -46,16 +44,11 @@ const Editor1 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
 
     // 해당 레이아웃 데이터 저장
     const saveEditorData = () => {
-        // if(!window.data){
-        //     window.data = {}
-        // }
-        // window.data.LAYOUT6 = layoutData; // 임시 테스트용
         saveCurrentData(layoutData);
     };
 
     const onPreview = () => {
         saveEditorData();
-        // navigate('/layout6', { replace: false });
         onRunPreview();
     };
 

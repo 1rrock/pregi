@@ -4,7 +4,6 @@ import VideoModal from "../component/VideoModal";
 import baseImg from "../img/base.png";
 import Gnb from "../component/Gnb";
 import CONSTANTS from "../constants";
-// import { useNavigate } from "react-router-dom";
 import YouTube from "react-youtube";
 
 const Editor4 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
@@ -21,7 +20,6 @@ const Editor4 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
         set: null,
         id: null,
     });
-    // const navigate = useNavigate();
 
     useEffect(() => {
         bgRef.current.style.backgroundColor = layoutData.bgColor;

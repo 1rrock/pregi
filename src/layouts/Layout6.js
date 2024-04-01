@@ -2,11 +2,7 @@ import { useEffect, useRef } from "react";
 import YouTube from "react-youtube";
 const Layout6 = ({ layoutData }) => {
     const bgRef = useRef(null);
-    // const [layoutData, setLayOutData] = useState(null);
     const getBoxId = (url) => url.split("v=").pop();
-    // useEffect(() => {
-    //     setLayOutData(window.data?.LAYOUT6 || null);
-    // }, []);
 
     useEffect(() => {
         bgRef.current.style.backgroundColor = layoutData?.bgColor;

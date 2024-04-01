@@ -358,7 +358,6 @@ const Main = () => {
         const onSaveChild = (item) => {
             for(let i=0; i<item.length; i++) {
                 if(currentObj.id === item[i].id){
-                    // item.splice(i, 1);
                     item[i].data = editorData;
                     setObj(newObj);
                     return;

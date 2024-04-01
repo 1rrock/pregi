@@ -23,10 +23,6 @@ const Editor1 = ({ saveCurrentData, currentEditorData, onRunPreview }) => {
         bgRef.current.style.backgroundColor = layoutData.bgColor;
     }, [layoutData]);
 
-    // useEffect(() => {
-    //     console.log(curObj)
-    // }, [curObj]);
-
     const onModal = (idx, set) => {
         onClickCurrentObj(idx, set);
         setIsModal({
